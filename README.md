@@ -1,3 +1,7 @@
+![pic1](./pic/pic1.png)
+
+![pic2](./pic/pic2.png)
+
 # 安装依赖
 
 ```
