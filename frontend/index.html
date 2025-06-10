@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>思想汇报格式化工具</title>
+  <link rel="stylesheet" href="css/style.css">
+  <!-- PDF导出所需的库 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+  <div class="container">
+      <header>
+          <h1>思想汇报格式化工具</h1>
+          <p>左侧输入文本，右侧自动生成标准格式的A4页面预览</p>
+      </header>
+      
+      <div class="main-content">
+          <!-- 左侧输入区域 -->
+          <div class="input-section">
+              <div class="input-header">
+                  <h3>文本输入</h3>
+                  <div class="input-stats">
+                      <span id="char-count">字符数: 0</span>
+                      <span id="page-estimate">预估页数: 0</span>
+                  </div>
+              </div>
+              
+              <!-- 汇报人姓名输入 -->
+              <div class="reporter-input">
+                  <label for="reporter-name">汇报人姓名：</label>
+                  <input type="text" id="reporter-name" placeholder="请输入汇报人姓名" value="XXX">
+              </div>
+              
+              <!-- 日期输入 -->
+              <div class="date-input">
+                  <label for="report-date">汇报日期：</label>
+                  <input type="date" id="report-date" placeholder="留空则使用今天日期">
+                  <small>（留空则自动使用今天日期）</small>
+              </div>
+              
+              <textarea 
+                  id="text-input" 
+                  placeholder="请在此粘贴您的思想汇报正文内容...&#10;&#10;注意：&#10;1. 连续数字会两个一组显示在一个格子中&#10;2. 第一行自动显示"思想汇报"标题&#10;3. 第二行自动显示"敬爱的党组织："&#10;4. 结尾自动添加汇报人和日期&#10;5. 行首标点符号会标红提醒&#10;&#10;或者输入您的个人情况，点击"生成范文"让AI帮您写作"
+              ></textarea>
+              <div class="input-actions">
+                  <button id="generate-btn" class="btn-generate">生成范文</button>
+                  <button id="process-btn" class="btn-primary">格式化预览</button>
+                  <button id="clear-btn" class="btn-secondary">清空内容</button>
+              </div>
+          </div>
+          
+          <!-- 右侧预览区域 -->
+          <div class="preview-section">
+              <div class="preview-header">
+                  <h3>A4页面预览</h3>
+                  <div class="preview-controls">
+                      <span id="page-info">第 0 页，共 0 页</span>
+                      <div class="page-controls">
+                          <button id="prev-page" class="page-btn" disabled>上一页</button>
+                          <button id="next-page" class="page-btn" disabled>下一页</button>
+                      </div>
+                      <div class="zoom-controls">
+                          <button id="zoom-out">-</button>
+                          <span id="zoom-level">100%</span>
+                          <button id="zoom-in">+</button>
+                      </div>
+                      <div class="download-controls">
+                          <button id="download-pdf" class="btn-download">
+                              <span class="download-icon">📄</span>
+                              下载PDF
+                          </button>
+                      </div>
+                  </div>
+              </div>
+              <div class="preview-container" id="preview-container">
+                  <div class="empty-preview">
+                      <p>请在左侧输入文本并点击"格式化预览"</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  
+  <div id="loading" class="loading hidden">
+      <div class="loading-spinner"></div>
+      <p>正在处理文本...</p>
+  </div>
+  
+  <script src="js/main.js"></script>
+</body>
+</html>
